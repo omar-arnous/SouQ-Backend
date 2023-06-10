@@ -4,7 +4,7 @@ const db = require('../data/database');
 
 class Product {
   constructor(productData) {
-    this.name = productData.name;
+    this.title = productData.title;
     this.description = productData.description;
     this.price = productData.price;
     this.image = productData.image;
@@ -68,7 +68,7 @@ class Product {
 
   save = async () => {
     const productData = {
-      name: this.name,
+      title: this.title,
       description: this.description,
       price: this.price,
       image: this.image,

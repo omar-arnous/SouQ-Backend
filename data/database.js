@@ -6,7 +6,7 @@ let database;
 
 const connectToDB = async () => {
   const client = await MongoClient.connect('mongodb://127.0.0.1:27017');
-  console.log('Connected to MongooseDB');
+  console.log('Connected to MongoDB');
   database = client.db('online-shop');
 };
 

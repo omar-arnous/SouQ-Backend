@@ -1,4 +1,5 @@
 require('dotenv').config();
+const morgan = require('morgan');
 const db = require('./data/database');
 const cors = require('cors');
 
@@ -23,6 +24,7 @@ app.use('/products/assets', express.static('product-data'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
+app.use(morgan('dev'));
 
 // Invoking routes
 app.use('/api/v1', baseRoutes);
