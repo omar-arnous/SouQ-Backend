@@ -42,8 +42,7 @@ const signup = async (req, res, next) => {
   }
   // create a token
   const token = createToken(signedUser._id);
-  const data = enteredData.name;
-  res.status(200).json({ data, token });
+  res.status(200).json({ enteredData, token });
 };
 
 const login = async (req, res, next) => {

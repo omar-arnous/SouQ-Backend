@@ -4,10 +4,11 @@ const bcrypt = require('bcrypt');
 const db = require('../data/database');
 
 class User {
-  constructor(email, password, name) {
+  constructor(email, password, name, isAdmin = false) {
     this.name = name;
     this.email = email;
     this.password = password;
+    this.isAdmin = isAdmin;
   }
 
   static findById = (userId) => {
@@ -37,6 +38,7 @@ class User {
       name: this.name,
       email: this.email,
       password: hashedPassword,
+      isAdmin: this.isAdmin,
     });
 
     return user;
