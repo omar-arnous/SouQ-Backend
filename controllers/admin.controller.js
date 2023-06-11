@@ -84,14 +84,24 @@ const updateOrder = async (req, res, next) => {
   }
 };
 
+const getUsers = async (req, res, next) => {
+  try {
+    const users = await User.findAll();
+    res.status(200).json({ users: users });
+  } catch (error) {
+    next(error);
+    return;
+  }
+};
+
 const deleteUser = (req, res, next) => {
   const uid = req.params.id;
   try {
     User.delete(uid);
   } catch (err) {
     res.status(400).json({ message: 'Unable to delete user' });
-    console.log(err);
     next();
+    return;
   }
 
   res.status(200).json({ message: 'User Deleted Successfully' });
@@ -104,5 +114,6 @@ module.exports = {
   deleteProduct: deleteProduct,
   getOrders: getOrders,
   updateOrder: updateOrder,
+  getUsers: getUsers,
   deleteUser: deleteUser,
 };

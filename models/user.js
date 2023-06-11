@@ -50,6 +50,14 @@ class User {
     const userId = new mongodb.ObjectId(uid);
     return db.getDB().collection('users').deleteOne({ _id: userId });
   };
+
+  static findAll = async () => {
+    const users = await db.getDB().collection('users').find().toArray();
+
+    return users.map((userDocument) => {
+      return new User(userDocument);
+    });
+  };
 }
 
 module.exports = User;

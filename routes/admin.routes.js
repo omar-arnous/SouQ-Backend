@@ -29,6 +29,8 @@ router.get('/orders', adminController.getOrders);
 
 router.patch('/orders/:id', adminController.updateOrder);
 
+router.get('/users', adminController.getUsers);
+
 router.delete('/user/:id', adminController.deleteUser);
 
 module.exports = router;
