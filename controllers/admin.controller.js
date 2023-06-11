@@ -1,5 +1,6 @@
 const Product = require('../models/product');
 const Order = require('../models/order');
+const User = require('../models/user');
 
 const getProducts = async (req, res, next) => {
   try {
@@ -83,6 +84,19 @@ const updateOrder = async (req, res, next) => {
   }
 };
 
+const deleteUser = (req, res, next) => {
+  const uid = req.params.id;
+  try {
+    User.delete(uid);
+  } catch (err) {
+    res.status(400).json({ message: 'Unable to delete user' });
+    console.log(err);
+    next();
+  }
+
+  res.status(200).json({ message: 'User Deleted Successfully' });
+};
+
 module.exports = {
   getProducts: getProducts,
   createNewProduct: createNewProduct,
@@ -90,4 +104,5 @@ module.exports = {
   deleteProduct: deleteProduct,
   getOrders: getOrders,
   updateOrder: updateOrder,
+  deleteUser: deleteUser,
 };

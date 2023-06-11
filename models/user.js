@@ -45,6 +45,11 @@ class User {
   hasMatchingPassword = (hashedPassword) => {
     return bcrypt.compare(this.password, hashedPassword);
   };
+
+  static delete = (uid) => {
+    const userId = new mongodb.ObjectId(uid);
+    return db.getDB().collection('users').deleteOne({ _id: userId });
+  };
 }
 
 module.exports = User;

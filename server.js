@@ -38,7 +38,7 @@ app.use(errorHandlerMiddleware);
 db.connectToDB()
   .then(() => {
     app.listen(port, () => {
-      console.log(`server is runing on: http://localhost:${port}`);
+      console.log(`server is runing on: http://localhost:${port}/api/v1`);
     });
   })
   .catch((error) => {
